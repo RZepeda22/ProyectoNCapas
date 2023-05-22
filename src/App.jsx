@@ -3,6 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import NavBar from './components/NavBar'
 import EventSlideShow from './components/EventSlideShow'
+import Events from './components/Events'
 
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
     <>
       <NavBar />
       <EventSlideShow />
+      <Events />
     </>
   )
 }

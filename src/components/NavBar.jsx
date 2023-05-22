@@ -16,7 +16,7 @@ function NavBar() {
             </li>
             <form className="flex content-center">
             <input className="ml-24 h-10 w-[32rem] outline-blue-500 rounded-xl bg-gradient-to-r from-blue-200 to-blue-100 pl-4 text-gray-600"/>
-            <button className="ml-1 rounded-xl w-12 h-10 bg-gradient-to-r from-blue-100 to-blue-200"><img src={searchIcon} className="ml-3" /></button>
+            <button className="transition duration-300 ml-1 rounded-xl w-12 h-10 bg-gradient-to-r from-blue-100 to-blue-200 "><img src={searchIcon} className="ml-3" /></button>
             </form>
             <button className="transition duration-300 rounded-xl w-48 h-16 ml-10  hover:bg-blue-200">
                 <div className="flex flex-row">

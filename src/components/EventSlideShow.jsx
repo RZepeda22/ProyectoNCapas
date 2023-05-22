@@ -6,9 +6,7 @@ function EventSlideShow() {
         <Carousel>
           <img
             src="https://flowbite.com/docs/images/carousel/carousel-1.svg"
-            alt="..."
-            className="object-cover"
-          />
+            />
           <img
             src="https://flowbite.com/docs/images/carousel/carousel-2.svg"
             alt="..."
