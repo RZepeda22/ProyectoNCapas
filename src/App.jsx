@@ -1,20 +1,33 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import NavBar from './components/NavBar'
-import EventSlideShow from './components/EventSlideShow'
-import Events from './components/Events'
+import { useState, useMemo } from 'react'
+import { Routes, Route } from 'react-router-dom'
+import Home from './components/Home'
+import AllEvents from './components/AllEvents'
+import Login from './components/Login'
+import UserContext from './context/UserContext'
+import Register from './components/Register'
 
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [userName, setUserName] = useState('John Smith');
+  const value = useMemo(
+    () => ({ userName, setUserName }), 
+    [userName]
+  );
 
   return (
-    <>
-      <NavBar />
-      <EventSlideShow />
-      <Events />
-    </>
+
+    <div>
+      <UserContext.Provider value={value}>
+        <Routes>
+        <Route path='/events' element={<AllEvents/>}/>
+        <Route path='/' element={<Home />}/>
+        <Route path='/login' element={<Login />}/>
+        <Route path='/register' element={<Register/>}/>
+      </Routes>
+      </UserContext.Provider>
+        
+      
+    </div>
   )
 }
 
