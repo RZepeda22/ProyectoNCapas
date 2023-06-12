@@ -3,9 +3,16 @@ import shoppingCart from '../assets/icons/shopping_cart_black_24dp.svg'
 import userIcon from '../assets/icons/person_black_24dp.svg'
 import { useState, useContext } from 'react'
 import { Link } from 'react-router-dom'
-import UserContext from '../context/UserContext'
+import ShoppingCartSideMenu from './poupsmenus/ShoppingCartSideMenu'
+import ShoppingCartContext from '../context/ShoppingCartContext'
 
 const NavBar = ({userName}) => {
+
+    const {shoppingCartForm, changeShoppingCart } = useContext(ShoppingCartContext)
+
+    const handleShoppingCartForm = () => {
+        changeShoppingCart();
+    }
 
     return(
         
@@ -13,6 +20,8 @@ const NavBar = ({userName}) => {
                 <Link to='/'>
                     <img src="https://i.ibb.co/4M3W5Vp/Logo.png" className="w-fit h-16 ml-6 hover:cursor-pointer"/>
                 </Link>
+            {shoppingCartForm && <ShoppingCartSideMenu />}
+            
            
             <ul>
                 <li className="flex list-none ml-16 font-rubik gap-10 text-lg">
@@ -68,12 +77,11 @@ const NavBar = ({userName}) => {
                     }
                     
                 
-            <Link to='/shoppingcart'>
-                <button className="transition duration-300 flex flex-col items-center ml-32 h-16 w-9 mr-10 rounded-xl hover:bg-blue-200">
+                <button className="transition duration-300 flex flex-col items-center ml-32 h-16 w-9 mr-10 rounded-xl hover:bg-blue-200"
+                onClick={() => handleShoppingCartForm()}>
                 <b>0</b>
                 <img className="w-9" src={shoppingCart}/>
             </button>
-            </Link>
             
         
       </nav>
