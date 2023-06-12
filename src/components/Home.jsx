@@ -2,10 +2,10 @@ import EventSlideShow from "./EventSlideShow";
 import Events from "./Events";
 import NavBar from "./NavBar";
 
-function Home(){
+function Home({userName}){
     return(
         <>
-        <NavBar/>
+        <NavBar userName={userName}/>
         <EventSlideShow/>
         <Events/>
         </>

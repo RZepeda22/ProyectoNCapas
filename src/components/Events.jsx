@@ -1,4 +1,5 @@
 import { data } from "autoprefixer";
+import {events as eventsData} from "../placeholderdata/events.json"
 
 function Events() {
 
@@ -7,38 +8,6 @@ function Events() {
         return new Date(string).toLocaleDateString([],options);
     }
 
-    const eventsData = [
-        {
-            title: "Convencion de Otakus y personas sin oficio",
-            image: "https://ichef.bbci.co.uk/news/624/mcs/media/images/81966000/jpg/_81966848_otakuchracters.jpg",
-            date: "2018-05-18T04:00:00.000Z",
-            time: "120",
-        },
-        {
-            title: "Convencion de Otakus y personas sin oficio",
-            image: "https://ichef.bbci.co.uk/news/624/mcs/media/images/81966000/jpg/_81966848_otakuchracters.jpg",
-            date: "2018-05-18T04:00:00.000Z",
-            time: "120",
-        },
-        {
-            title: "Convencion de Otakus y personas sin oficio",
-            image: "https://ichef.bbci.co.uk/news/624/mcs/media/images/81966000/jpg/_81966848_otakuchracters.jpg",
-            date: "2018-05-18T04:00:00.000Z",
-            time: "120",
-        },
-        {
-            title: "Convencion de Otakus y personas sin oficio",
-            image: "https://ichef.bbci.co.uk/news/624/mcs/media/images/81966000/jpg/_81966848_otakuchracters.jpg",
-            date: "2018-05-18T04:00:00.000Z",
-            time: "120",
-        },
-        {
-            title: "Convencion de Otakus y personas sin oficio",
-            image: "https://ichef.bbci.co.uk/news/624/mcs/media/images/81966000/jpg/_81966848_otakuchracters.jpg",
-            date: "2018-05-18T04:00:00.000Z",
-            time: "120",
-        }
-    ]
     return(
         <div className="mt-8">
             <strong className="font-rubik text-3xl ml-10 font-bold">Próximos eventos</strong>

@@ -1,10 +1,9 @@
 import NavBar from "./NavBar";
 
-function AllEvents(){
+function AllEvents({userName}){
     return(
-        
         <div>
-            <NavBar />
+            <NavBar userName={userName}/>
             <strong>
                 Hola
             </strong>

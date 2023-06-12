@@ -1,16 +1,14 @@
 import { Link } from 'react-router-dom'
 import {users} from '../placeholderdata/users.json'
-import { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom';
-import UserContext from '../context/UserContext'
+import { useState } from 'react';
 
-function Login() {
+
+function Login({userName, onChangeUser}) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [loginError, setLoginError] = useState(false);
-    const [name, setName] = useState('');
     const navigate = useNavigate();
-    const { userName, setUserName } = useContext(UserContext);
 
     const submitLogin = (event) => {
         event.preventDefault();
@@ -19,7 +17,7 @@ function Login() {
 
         if (user && user.password === password) {
             setLoginError(false)
-            console.log(user.name)
+            onChangeUser(user.name)
             navigate('/')
         } else {
             setLoginError(true);

@@ -5,8 +5,7 @@ import { useState, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import UserContext from '../context/UserContext'
 
-function NavBar() {
-    const {userName} = useContext(UserContext)
+const NavBar = ({userName}) => {
 
     return(
         
@@ -33,22 +32,49 @@ function NavBar() {
                 <img src={searchIcon} className="ml-3" />
             </button>
             </form>
-            <Link to='/login'>
-                <button className="transition duration-300 rounded-xl w-48 h-16 ml-10  hover:bg-blue-200">
-                <div className="flex flex-row">
-                    <img src={userIcon} className="ml-4"/>
-                    <article className="ml-3 flex flex-col font-rubik">
-                        <b>Welcome</b>
-                        <b></b>
-                    </article>
-                </div>
-            </button>
-            </Link>
             
-            <button className="transition duration-300 flex flex-col items-center ml-32 h-16 w-9 mr-10 rounded-xl hover:bg-blue-200">
+                
+                    {
+                        userName.length === 0 ? 
+                        <>
+                        <Link to='/login'>
+                        <button className="transition duration-300 rounded-xl w-48 h-16 ml-10  hover:bg-blue-200">
+                        <div className="flex flex-row">
+                        <img src={userIcon} className="ml-4"/>
+                        <article className="ml-3 flex flex-col font-rubik">
+                        <b>Welcome</b>
+                        <b>Register/Log in</b>
+                        </article>
+                        </div>
+                        </button>
+                        </Link>
+                        </>
+                         :
+                         <>
+                        <Link to='/dashboard'>
+                        <button className="transition duration-300 rounded-xl w-48 h-16 ml-10  hover:bg-blue-200">
+                        <div className="flex flex-row">
+                         <img src={userIcon} className="ml-4"/>
+                         <article className="ml-3 flex flex-col font-rubik">
+                         <b>Welcome</b>
+                         <b>{userName}</b>
+                        </article>
+                        </div>
+                        </button>
+                        </Link>
+                        </>
+                         
+
+                    }
+                    
+                
+            <Link to='/shoppingcart'>
+                <button className="transition duration-300 flex flex-col items-center ml-32 h-16 w-9 mr-10 rounded-xl hover:bg-blue-200">
                 <b>0</b>
                 <img className="w-9" src={shoppingCart}/>
             </button>
+            </Link>
+            
         
       </nav>
 )
