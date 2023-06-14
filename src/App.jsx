@@ -11,7 +11,8 @@ import ShoppingCartContext from './context/ShoppingCartContext'
 
 
 function App() {
-  const [userName, setUserName] = useState(localStorage.getItem('userName'));
+  const [userName, setUserName] = useState(localStorage.getItem('userName') || "");
+  
   const [shoppingCartForm, setShoppingCartForm] = useState(false);
 
   useEffect(() => {
@@ -20,7 +21,13 @@ function App() {
 
   useEffect(() => {
     const item = localStorage.getItem('userName');
-     setUserName(item);
+    console.log(item)
+    if(item === null){
+      localStorage.setItem('userName', "")
+    }else{
+      setUserName(item);
+    }
+     
   }, []);
 
   const onChangeUser = (newUsername) => {

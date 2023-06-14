@@ -10,9 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@thewirv/react-barcode-scanner": "^3.2.3",
     "flowbite": "^1.6.5",
     "flowbite-react": "^0.4.4",
     "json-loader": "^0.5.7",
+    "qrcode.react": "^3.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.9.0",

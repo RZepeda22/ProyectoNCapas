@@ -8,7 +8,7 @@ function TransferTicket({onChangeTicketTransfer}){
         <>
         <div className="fixed top-0 bg-opacity-40 w-full h-full bg-black flex items-center justify-center"
         onClick={() => onChangeTicketTransfer()}>
-            <form className="shadow-md rounded-lg relative h-4/6 w-1/4 bg-gray-200 bg-opacity-100 flex flex-col items-center"
+            <form className="shadow-md rounded-lg relative h-4/6 w-3/4 md:w-1/4 bg-gray-200 bg-opacity-100 flex flex-col items-center"
             onClick={handleClick}>
                 <b className="mt-4 text-xl">Transferir Ticket</b>
                 <label className="pl-6 pr-6 mt-8 text-center text-sm font-semibold">Ingrese el email o nombre de usuario de la persona a la que quiera transferirle</label>

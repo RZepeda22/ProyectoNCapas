@@ -11,7 +11,7 @@ function Home({userName}){
     return(
         <div className="pb-10">
         <NavBar userName={userName}/>
-        <EventSlideShow/>
+        <EventSlideShow />
         <Events/>
         </div>
        

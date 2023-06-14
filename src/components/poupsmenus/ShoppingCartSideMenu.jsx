@@ -9,7 +9,7 @@ function ShoppingCartSideMenu(){
     }
     return(
         <div className="fixed top-0 w-full h-full bg-black bg-opacity-40">
-            <div className="fixed top-0 right-0 w-1/4 h-full bg-gray-100 font-rubik">
+            <div className="fixed top-0 right-0 w-9/12 md:w-1/4 h-full bg-gray-100 font-rubik">
             <section className="flex flex-col pt-6 pl-6 w-full h-fit">
                 <strong className="text-2xl">
                     Carrito de compra

@@ -9,15 +9,15 @@ function EventSlideShow() {
 
   const setStyle = () => {
     if(shoppingCartForm){
-      return "h-96 w-3/4 opacity-40"
+      return "h-60 md:h-96 w-1/4 md:w-3/4 opacity-40"
     } else {
-      return "h-96 w-full"
+      return "h-60 md:h-96 w-full "
     }
 
   } 
     return(
         <div className={setStyle()}>
-        <Carousel className="w-fit">
+        <Carousel className="w-fit h-full">
           {eventsData.map(event => {
             return(
               <img src={event.image}></img>
