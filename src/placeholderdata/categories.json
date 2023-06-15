@@ -1,0 +1,19 @@
+{
+    "categories": [
+        {
+            "name": "Music"
+        },
+        {
+            "name": "Tech"
+        },
+        {
+            "name": "Art"
+        },
+        {
+            "name": "Sports"
+        },
+        {
+            "name": "Gala"
+        }
+    ]
+}
