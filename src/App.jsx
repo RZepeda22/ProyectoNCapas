@@ -6,12 +6,13 @@ import Login from './components/Login'
 import {users as allusers} from './placeholderdata/users.json'
 import Register from './components/Register'
 import Dashboard from './components/Dashboard'
+import ViewEvent from './components/ViewEvent'
 import ShoppingCar from './components/ShoppingCar'
 import ShoppingCartContext from './context/ShoppingCartContext'
 
 
 function App() {
-  const [userName, setUserName] = useState(localStorage.getItem('userName'));
+  const [userName, setUserName] = useState(localStorage.getItem('userName') || "");
   const [shoppingCartForm, setShoppingCartForm] = useState(false);
 
   useEffect(() => {
@@ -48,6 +49,7 @@ function App() {
         <Route path='/register' element={<Register/>}/>
         <Route path='/dashboard' element={<Dashboard userName={userName} onChangeUser={onChangeUser}/>} />
         <Route path='/shoppingcart' element={<ShoppingCar userName={userName}/>}/>
+        <Route path="view/:eId" element={<ViewEvent userName={userName} />} />
        
         
       </Routes> 

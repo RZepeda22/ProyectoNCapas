@@ -1,36 +1,42 @@
 {
     "events": [
         {
+            "id": "1",
             "title": "Summer Music Festival",
             "image": "https://travelfreak.com/wp-content/uploads/2018/04/summer-music-festivals-1-770x513.jpg",
             "date": 1675372800,
             "time": 120
         },
         {
+            "id": "2",
             "title": "Art Exhibition Opening",
             "image": "https://gallery.jacksonsart.com/app/uploads/2023/02/Mall-Gallery-Main-Gallery-Exhibition-Hire.jpg",
             "date": 1676702400,
             "time": 90
           },
           {
+            "id": "3",
             "title": "Tech Conference 2023",
             "image": "https://www.applaudhr.com/hubfs/HRTechx.jpg",
             "date": 1677580800,
             "time": 240
           },
           {
+            "id": "4",
             "title": "Charity Gala Dinner",
             "image": "https://worldgourmetsummit.com/wgs2018/files/event/1521727126.14976.jpg",
             "date": 1678747200,
             "time": 180
           },
           {
+            "id": "5",
             "title": "Sports Tournament Finals",
             "image": "https://www.sikids.com/.image/t_share/MTY5ODE3NzM2NDIyMTA2OTM5/squash-lead-photo.jpg",
             "date": 1680096000,
             "time": 150
           },
-        {
+          {
+            "id": "6",
             "title": "Iron Maiden Concert",
             "image": "https://es.concerts-metal.com/images/flyers/202210/1665053273.webp",
             "date": 1680096000,
