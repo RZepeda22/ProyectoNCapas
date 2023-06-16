@@ -1,0 +1,22 @@
+{
+    "tiers": [
+        {
+            "id": "1",
+            "name":"Zona general",
+            "cost": "5000"
+
+        },
+        {
+            "id": "2",
+            "name":"Zona particular",
+            "cost": "7000"
+            
+        },
+        {
+            "id": "3",
+            "name":"Zona VIP",
+            "cost": "19000000"
+            
+        }
+    ]
+}

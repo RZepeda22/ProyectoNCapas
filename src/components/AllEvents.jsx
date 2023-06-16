@@ -4,11 +4,14 @@ import { data } from "autoprefixer";
 import { useState, useEffect } from "react";
 import {events as eventsData} from "../placeholderdata/events.json"
 import {categories} from "../placeholderdata/categories.json"
+import { useNavigate } from "react-router-dom";
 
 function AllEvents({userName}){
 
     const [categoryName, setCategoryName] = useState("");
     const [events, setEvents] = useState([]);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         if(categoryName === ""){
@@ -26,6 +29,10 @@ function AllEvents({userName}){
 
     const handleCategoryChange = (event) => {
         setCategoryName(event.target.value);
+    }
+
+    const handleEventNavigation = (id) => {
+        navigate(`/view/${id}`)
     }
     
     return(
@@ -52,7 +59,8 @@ function AllEvents({userName}){
             <section className="flex flex-row flex-wrap w-fit gap-6 md:gap-10 justify-center md:ml-6 md:mr-8 mt-4 font-rubik">
             {events.map((data, index) => {
                 return (
-                    <section className="transition duration-400 shadow-lg rounded-sm flex flex-col p-2 h-70 md:h-80 w-70 md:w-80 bg-gray-100 hover:cursor-pointer hover:bg-blue-200">
+                    <section className="transition duration-400 shadow-lg rounded-sm flex flex-col p-2 h-70 md:h-80 w-70 md:w-80 bg-gray-100 hover:cursor-pointer hover:bg-blue-200"
+                    onClick={() => handleEventNavigation(data.id)}>
                         <img src={data.image} className="rounded-lg aspect-video"/>
                         <b className="mt-3">{data.title}</b>
                         <h2 className="text-orange-700">{parseDate(data.date)}</h2>

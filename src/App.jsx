@@ -8,12 +8,19 @@ import Register from './components/Register'
 import Dashboard from './components/Dashboard'
 import ShoppingCar from './components/ShoppingCar'
 import ShoppingCartContext from './context/ShoppingCartContext'
+import ViewEvent from './components/ViewEvent'
 
 
 function App() {
   const [userName, setUserName] = useState(localStorage.getItem('userName') || "");
-  
+  const [cartItems, setCartItems] = useState([]);
   const [shoppingCartForm, setShoppingCartForm] = useState(false);
+
+  useEffect(() => {
+      localStorage.setItem('cartItems', JSON.stringify(cartItems));
+  }, [cartItems]);
+
+  
 
   useEffect(() => {
     localStorage.setItem('userName', userName)
@@ -30,6 +37,13 @@ function App() {
      
   }, []);
 
+  useEffect(() => {
+    const savedCartItems = localStorage.getItem('cartItems');
+    if (savedCartItems) {
+      setCartItems(JSON.parse(savedCartItems));
+    }
+  }, []);
+
   const onChangeUser = (newUsername) => {
     setUserName(newUsername);
   };
@@ -38,9 +52,22 @@ function App() {
     setShoppingCartForm(!shoppingCartForm)
   }
 
+  const addToCart = (item) => {
+    setCartItems([...cartItems, item]);
+  };
+
+  const removeFromCart = (index) => {
+    const updatedCartItems = [...cartItems];
+    updatedCartItems.splice(index, 1);
+    setCartItems(updatedCartItems);
+  };
+
   const cartContextValues = {
     shoppingCartForm,
-    changeShoppingCart
+    changeShoppingCart,
+    cartItems,
+    addToCart,
+    removeFromCart
   }
 
   return (
@@ -55,6 +82,7 @@ function App() {
         <Route path='/register' element={<Register/>}/>
         <Route path='/dashboard' element={<Dashboard userName={userName} onChangeUser={onChangeUser}/>} />
         <Route path='/shoppingcart' element={<ShoppingCar userName={userName}/>}/>
+        <Route path="view/:eId" element={<ViewEvent userName={userName} />} />
        
         
       </Routes> 

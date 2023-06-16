@@ -9,6 +9,7 @@ import ChangePassword from "./popupforms/ChangePassword";
 import QRScanner from "./qrscanner-generator/QRScanner";
 import {QRCodeSVG} from 'qrcode.react';
 import QRGenerator from "./qrscanner-generator/QRGenerator";
+import { useNavigate } from "react-router-dom";
 
 
 function Dashboard({userName, onChangeUser}){
@@ -16,6 +17,8 @@ function Dashboard({userName, onChangeUser}){
     const [transferTicket, setTransferTicket] = useState(false)
     const [changePassword, setChangePassword] = useState(false)
     const [QRGen, setQRGen] = useState(false);
+
+    const navigate = useNavigate();
 
     const onChangeTicketTransfer = () => {
         setTransferTicket(!transferTicket)
@@ -60,6 +63,7 @@ function Dashboard({userName, onChangeUser}){
 
     return(
         <>
+        {userName === "" ? navigate('/login') : <div></div>}
         <NavBar userName={userName}/>
         {transferTicket && <TransferTicket onChangeTicketTransfer={onChangeTicketTransfer}/>}
         {changePassword && <ChangePassword onChangeChangePassword={onChangeChangePassword}/>}
