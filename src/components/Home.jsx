@@ -4,13 +4,13 @@ import Events from "./Events";
 import NavBar from "./NavBar";
 import ShoppingCartContext from "../context/ShoppingCartContext";
 
-function Home({userName}){
+function Home(){
     const {shoppingCartValue, setShoppingCart } = useContext(ShoppingCartContext)
 
     console.log(shoppingCartValue)
     return(
         <div className="pb-10">
-        <NavBar userName={userName}/>
+        <NavBar />
         <EventSlideShow />
         <Events/>
         </div>

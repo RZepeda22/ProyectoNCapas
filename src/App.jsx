@@ -12,31 +12,20 @@ import ViewEvent from './components/ViewEvent'
 
 
 function App() {
-  const [userName, setUserName] = useState(localStorage.getItem('userName') || "");
-  const [cartItems, setCartItems] = useState([]);
+  const [userName, setUserName] = useState(JSON.parse(localStorage.getItem('userName')) || []);
+  const [cartItems, setCartItems] = useState(JSON.parse(localStorage.getItem('cartItems')) || []);
   const [shoppingCartForm, setShoppingCartForm] = useState(false);
   const [showNotification, setShowNotification] = useState(false);
 
   useEffect(() => {
     if (showNotification) {
-      // After 1 second, hide the notification
       const timeout = setTimeout(() => {
         setShowNotification(false);
       }, 1000);
 
-      // Cleanup function to clear the timeout if the component unmounts or the notification is hidden manually
       return () => clearTimeout(timeout);
     }
   }, [showNotification]);
-
-  useEffect(() => {
-    const savedCartItems = JSON.parse(localStorage.getItem('cartItems'));
-    if (savedCartItems) {
-      setCartItems(savedCartItems);
-    } else {
-      localStorage.setItem('cartItems', JSON.stringify([]));
-    }
-  }, []);
 
   useEffect(() => {
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
@@ -45,19 +34,8 @@ function App() {
   
 
   useEffect(() => {
-    localStorage.setItem('userName', userName)
+    localStorage.setItem('userName', JSON.stringify(userName));
   }, [userName]);
-
-  useEffect(() => {
-    const item = localStorage.getItem('userName');
-    console.log(item)
-    if(item === null){
-      localStorage.setItem('userName', "")
-    }else{
-      setUserName(item);
-    }
-     
-  }, []);
 
   useEffect(() => {
     if (showNotification) {
@@ -100,7 +78,9 @@ function App() {
     addToCart,
     removeFromCart,
     showNotification,
-    handleShowNotification
+    handleShowNotification,
+    onChangeUser,
+    userName
   }
 
   return (
@@ -109,13 +89,13 @@ function App() {
       <ShoppingCartContext.Provider value={cartContextValues}>
       <Routes>
         
-        <Route path='/events' element={<AllEvents userName={userName}/>}/>
-        <Route path='/' element={<Home userName={userName}/>}/>
-        <Route path='/login' element={<Login userName={userName} onChangeUser={onChangeUser}/>}/>
+        <Route path='/events' element={<AllEvents/>}/>
+        <Route path='/' element={<Home/>}/>
+        <Route path='/login' element={<Login />}/>
         <Route path='/register' element={<Register/>}/>
-        <Route path='/dashboard' element={<Dashboard userName={userName} onChangeUser={onChangeUser}/>} />
-        <Route path='/shoppingcart' element={<ShoppingCar userName={userName}/>}/>
-        <Route path="view/:eId" element={<ViewEvent userName={userName} />} />
+        <Route path='/dashboard' element={<Dashboard />} />
+        <Route path='/shoppingcart' element={<ShoppingCar />}/>
+        <Route path="view/:eId" element={<ViewEvent  />} />
        
         
       </Routes> 

@@ -34,6 +34,13 @@
         "email": "michaelbrown@example.com",
         "password": "password5",
         "role": "Mod"
+      },
+      {
+        "id": 6,
+        "name": "Michael Black",
+        "email": "michaelblack@example.com",
+        "password": "password6",
+        "role": "Stats"
       }
     ]
   }

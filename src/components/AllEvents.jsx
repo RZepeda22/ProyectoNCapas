@@ -6,7 +6,7 @@ import {events as eventsData} from "../placeholderdata/events.json"
 import {categories} from "../placeholderdata/categories.json"
 import { useNavigate } from "react-router-dom";
 
-function AllEvents({userName}){
+function AllEvents(){
 
     const [categoryName, setCategoryName] = useState("");
     const [events, setEvents] = useState([]);
@@ -37,7 +37,7 @@ function AllEvents({userName}){
     
     return(
         <>
-        <NavBar userName={userName} />
+        <NavBar />
         <div className="mt-10 md:mt-8">
             <section className="flex flex-col md:flex-row items-center text-center">
                 <strong className="font-rubik text-3xl md:ml-12 font-bold">Todos los eventos</strong>

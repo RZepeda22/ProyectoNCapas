@@ -1,23 +1,28 @@
 import { Link } from 'react-router-dom'
 import {users} from '../placeholderdata/users.json'
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import ShoppingCartContext from '../context/ShoppingCartContext';
 
 
-function Login({userName, onChangeUser}) {
-    const [username, setUsername] = useState('');
+function Login() {
+    const [username, setUsername] = useState([]);
     const [password, setPassword] = useState('');
     const [loginError, setLoginError] = useState(false);
     const navigate = useNavigate();
+
+    const {userName, onChangeUser} = useContext(ShoppingCartContext)
 
     const submitLogin = (event) => {
         event.preventDefault();
         
         const user = users.find((user) => user.name === username || user.email === username);
+        const nameOfUser = user.name;
+        const roleOfUser = user.role;
 
         if (user && user.password === password) {
             setLoginError(false)
-            onChangeUser(user.name)
+            onChangeUser({nameOfUser, roleOfUser})
             navigate('/')
         } else {
             setLoginError(true);
@@ -39,7 +44,7 @@ function Login({userName, onChangeUser}) {
                 onChange={(e) => setUsername(e.target.value)}
                 ></input>
                 <input name="password" 
-                type="text" 
+                type="password" 
                 className="w-full md:w-1/2 h-8 mt-2 border-2 border-gray-400 outline-blue-500 rounded-sm pl-4 text-gray-600" 
                 placeholder="Contraseña"
                 value={password}
