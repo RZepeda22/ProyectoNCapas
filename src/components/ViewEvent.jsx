@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import {events as eventsData} from "../placeholderdata/events.json"
 import {tiers as tiersData} from "../placeholderdata/tiers.json"
@@ -6,10 +6,12 @@ import { object } from "prop-types";
 import NavBar from "./NavBar";
 import Ticket from "./Ticket";
 import {FaCalendarAlt} from "react-icons/fa"
+import ShoppingCartContext from "../context/ShoppingCartContext";
 
 export default function ViewEvent({userName}) {
   const [item, setItem] = useState({});
   const params = useParams();
+  const {shoppingCartForm} = useContext(ShoppingCartContext);
 
   useEffect(() => {
     const event = eventsData.filter(event => event.id == params.eId);
@@ -25,13 +27,22 @@ export default function ViewEvent({userName}) {
     return new Intl.DateTimeFormat('es-MX', {month: 'short'}).format(date)
 }
 
+const setStyle = () => {
+  if(shoppingCartForm){
+    return "relative w-1/4 md:w-3/4"
+  } else {
+    return "relative w-full"
+  }
+
+}
+
   return (
     <>
     <NavBar userName={userName}/>
     <div>
       
-      <div className="relative w-full">
-            <img src={item[0]?.image} className="w-full h-[28rem] object-cover "/>
+      <div className={setStyle()}>
+            <img src={item[0]?.image} className="h-[28rem] w-full object-cover"/>
             <div className="absolute left-0 bottom-0 opacity-80 w-full h-full bg-gradient-to-t from-black to-transparent"></div>
             <div className="absolute left-1 bottom-1 text-white">
                 <div className="flex flex-row items-center p-4">
@@ -62,9 +73,9 @@ export default function ViewEvent({userName}) {
         <div className="flex flex-col w-4/12 bg-gray-100 mt-10 mb-10 rounded-lg">
          
          {tiersData.map((tier) => { return(
-          <ul key={tier.id}>
-            <li><Ticket title={item[0]?.title} type={tier.name} cost={tier.cost} urlEvent={item[0]?.image}/></li>
-          </ul>
+          <div key={tier.id}>
+            <section><Ticket title={item[0]?.title} tier={tier.name} cost={tier.cost} image={item[0]?.image}/></section>
+          </div>
          )
          })}
          

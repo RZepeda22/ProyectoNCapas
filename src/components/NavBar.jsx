@@ -5,10 +5,11 @@ import { useState, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import ShoppingCartSideMenu from './poupsmenus/ShoppingCartSideMenu'
 import ShoppingCartContext from '../context/ShoppingCartContext'
+import Notification from './popupnotifications/Notification'
 
 const NavBar = ({userName}) => {
 
-    const {shoppingCartForm, changeShoppingCart } = useContext(ShoppingCartContext)
+    const {shoppingCartForm, changeShoppingCart, cartItems} = useContext(ShoppingCartContext)
 
     const handleShoppingCartForm = () => {
         changeShoppingCart();
@@ -25,12 +26,9 @@ const NavBar = ({userName}) => {
            
             <ul>
                 <li className="flex list-none md:ml-16 font-rubik gap-10 text-lg">
-                    <Link to='/events' className="text-blue-400 hover:cursor-pointer">
+                    <Link to='/events' className="text-blue-800 hover:cursor-pointer text-xl">
                     Events
                     </Link>
-                    <a className="text-blue-800 hover:cursor-pointer">
-                    Cartelera
-                    </a>
             
             </li>
             </ul>
@@ -78,7 +76,7 @@ const NavBar = ({userName}) => {
                 
                 <button className="transition duration-300 flex flex-col items-center md:ml-32 h-16 w-9 md:mr-10 rounded-xl hover:bg-blue-200"
                 onClick={() => handleShoppingCartForm()}>
-                <b>0</b>
+                <b>{cartItems.length}</b>
                 <img className="w-9" src={shoppingCart}/>
             </button>
             

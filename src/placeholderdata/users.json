@@ -4,31 +4,36 @@
         "id": 1,
         "name": "John Doe",
         "email": "johndoe@example.com",
-        "password": "password1"
+        "password": "password1",
+        "role": "User"
       },
       {
         "id": 2,
         "name": "Jane Smith",
         "email": "janesmith@example.com",
-        "password": "password2"
+        "password": "password2",
+        "role": "Admin"
       },
       {
         "id": 3,
         "name": "David Johnson",
         "email": "davidjohnson@example.com",
-        "password": "password3"
+        "password": "password3",
+        "role": "Mod"
       },
       {
         "id": 4,
         "name": "Sarah Wilson",
         "email": "sarahwilson@example.com",
-        "password": "password4"
+        "password": "password4",
+        "role": "User"
       },
       {
         "id": 5,
         "name": "Michael Brown",
         "email": "michaelbrown@example.com",
-        "password": "password5"
+        "password": "password5",
+        "role": "Mod"
       }
     ]
   }

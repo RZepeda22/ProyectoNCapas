@@ -2,7 +2,7 @@ import { useContext, useState, useEffect } from "react";
 import ShoppingCartContext from "../../context/ShoppingCartContext";
 
 function ShoppingCartSideMenu(){
-    const {cartItems, changeShoppingCart } = useContext(ShoppingCartContext)
+    const {cartItems, changeShoppingCart, removeFromCart} = useContext(ShoppingCartContext)
 
     const handleShoppingCartForm = () => {
         changeShoppingCart();
@@ -18,7 +18,7 @@ function ShoppingCartSideMenu(){
                     <button className="ml-20"
                     onClick={() => handleShoppingCartForm()}>X</button>
                 </strong>
-                <h1 className="mt-2">2 items</h1>
+                <h1 className="mt-2">Items: {cartItems.length}</h1>
                     
                 <ul className="w-full h-fit">
                     {/* Do a ForEach of each element in local storage */}
@@ -26,17 +26,17 @@ function ShoppingCartSideMenu(){
                     {cartItems.map((item, index) =>{
                         return(
                             <div key={index} className="pt-4 pb-4 border-b-2">
-                        <h2 className="line-clamp-2 font-semibold italic leading-tight">{item[index].title}</h2>
-                        {console.log(item[index].title)}
+                        <h2 className="line-clamp-2 font-semibold italic leading-tight">{item.title}</h2>
                         <li className="flex flex-row mt-2">
                         <img src="https://www.applaudhr.com/hubfs/HRTechx.jpg"
                         className="w-24 h-20"/>
                         <section className="flex flex-col ml-2">
-                            <small className="font-bold bg-green-200 rounded-md p-1">{item[index].tier}</small>
+                            <small className="font-bold bg-green-200 rounded-md p-1">{item.tier}</small>
                             <small>Cantidad: 1</small>
-                            <button className="border border-black rounded mt-1">Remover</button>
+                            <button className="border border-black rounded mt-1"
+                            onClick={() => removeFromCart(index)}>Remover</button>
                         </section>
-                        <b className="ml-auto mr-8">{item[index].cost}</b>
+                        <b className="ml-auto mr-8">{item.cost}</b>
                     </li>
                     </div>
                     )})}

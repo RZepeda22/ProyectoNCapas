@@ -15,9 +15,31 @@ function App() {
   const [userName, setUserName] = useState(localStorage.getItem('userName') || "");
   const [cartItems, setCartItems] = useState([]);
   const [shoppingCartForm, setShoppingCartForm] = useState(false);
+  const [showNotification, setShowNotification] = useState(false);
 
   useEffect(() => {
-      localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    if (showNotification) {
+      // After 1 second, hide the notification
+      const timeout = setTimeout(() => {
+        setShowNotification(false);
+      }, 1000);
+
+      // Cleanup function to clear the timeout if the component unmounts or the notification is hidden manually
+      return () => clearTimeout(timeout);
+    }
+  }, [showNotification]);
+
+  useEffect(() => {
+    const savedCartItems = JSON.parse(localStorage.getItem('cartItems'));
+    if (savedCartItems) {
+      setCartItems(savedCartItems);
+    } else {
+      localStorage.setItem('cartItems', JSON.stringify([]));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
   }, [cartItems]);
 
   
@@ -38,11 +60,14 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const savedCartItems = localStorage.getItem('cartItems');
-    if (savedCartItems) {
-      setCartItems(JSON.parse(savedCartItems));
+    if (showNotification) {
+      const timeout = setTimeout(() => {
+        setShowNotification(false);
+      }, 1000);
+
+      return () => clearTimeout(timeout);
     }
-  }, []);
+  }, [showNotification]);
 
   const onChangeUser = (newUsername) => {
     setUserName(newUsername);
@@ -53,13 +78,19 @@ function App() {
   }
 
   const addToCart = (item) => {
-    setCartItems([...cartItems, item]);
+    setCartItems((prevCartItems) => [...prevCartItems, item]);
   };
 
   const removeFromCart = (index) => {
-    const updatedCartItems = [...cartItems];
-    updatedCartItems.splice(index, 1);
-    setCartItems(updatedCartItems);
+    setCartItems((prevCartItems) => {
+      const updatedCartItems = [...prevCartItems];
+      updatedCartItems.splice(index, 1);
+      return updatedCartItems;
+    });
+  };
+
+  const handleShowNotification = () => {
+    setShowNotification(true);
   };
 
   const cartContextValues = {
@@ -67,7 +98,9 @@ function App() {
     changeShoppingCart,
     cartItems,
     addToCart,
-    removeFromCart
+    removeFromCart,
+    showNotification,
+    handleShowNotification
   }
 
   return (
