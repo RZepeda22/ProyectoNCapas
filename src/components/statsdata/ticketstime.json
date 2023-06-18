@@ -1,0 +1,44 @@
+{
+    "ticketstime": [
+      {
+        "hour": "09:00",
+        "quantity": 50
+      },
+      {
+        "hour": "10:00",
+        "quantity": 75
+      },
+      {
+        "hour": "11:00",
+        "quantity": 30
+      },
+      {
+        "hour": "12:00",
+        "quantity": 60
+      },
+      {
+        "hour": "13:00",
+        "quantity": 90
+      },
+      {
+        "hour": "14:00",
+        "quantity": 120
+      },
+      {
+        "hour": "15:00",
+        "quantity": 80
+      },
+      {
+        "hour": "16:00",
+        "quantity": 45
+      },
+      {
+        "hour": "17:00",
+        "quantity": 55
+      },
+      {
+        "hour": "18:00",
+        "quantity": 70
+      }
+    ]
+  }

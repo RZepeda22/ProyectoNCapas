@@ -4,9 +4,10 @@ import {events as eventsData} from "../../placeholderdata/events.json"
 import {tiers as tiersData} from "../../placeholderdata/tiers.json"
 import { object } from "prop-types";
 import NavBar from "../NavBar";
-import Ticket from "../Ticket";
 import {FaCalendarAlt} from "react-icons/fa"
 import ShoppingCartContext from "../../context/ShoppingCartContext";
+import TicketStats from "./TicketStats";
+import Stats from "./Stats";
 
 function ViewEventStats(){
     const [item, setItem] = useState({});
@@ -74,7 +75,7 @@ const setStyle = () => {
          
          {tiersData.map((tier) => { return(
           <div key={tier.id}>
-            <section><Ticket title={item[0]?.title} tier={tier.name} cost={tier.cost} image={item[0]?.image}/></section>
+            <section><TicketStats title={item[0]?.title} tier={tier.name} cost={tier.cost} image={item[0]?.image}/></section>
           </div>
          )
          })}
@@ -88,7 +89,9 @@ const setStyle = () => {
       
       
       
+      
     </div>
+    <Stats />
     </>
 
   );

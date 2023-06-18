@@ -1,0 +1,20 @@
+{
+    "tierssold":[
+        {
+            "name": "Zona general",
+            "value": 50
+        },
+        {
+            "name": "Zona VIP",
+            "value": 45
+        },
+        {
+            "name": "Zona particular",
+            "value": 70
+        }
+    ]
+}
+
+    
+    
+
